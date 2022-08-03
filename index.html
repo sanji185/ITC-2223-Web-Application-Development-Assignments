@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Web Form</title>
+
+    <meta name="SANJEEV" content="USJP" />
+    <!-- Font Awesome CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Validation -->
+    <script defer src="form_validation.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Registration Form</h2>
+
+        </div>
+        <form class="form" name="registration" onSubmit="return formValidation();">
+            <table style="width:120%">
+                <tr>
+                    <td style="width:20%"><label>First Name</label></td>
+                    <td style="width:5%"><i class="fa fa-user" aria-hidden="true"></i></td>
+                    <td style="width:50%"> <input type="text " id="fname" placeholder="First Name " required></td>
+                </tr>
+                <tr>
+                    <td style="width:20%"><label>Last Name</label></td>
+                    <td style="width:5%"><i class="fa fa-user" aria-hidden="true"></i></td>
+                    <td style="width:50%"> <input type="text " id="lname" placeholder="Last Name " required></td>
+                </tr>
+                <tr>
+                    <td style="width:20%"><label>DOB</label></td>
+                    <td style="width:5%"><i class="fa fa-calendar" aria-hidden="true"></i></td>
+                    <td style="width:50%"> <input type="date" id="dob" required></td>
+                </tr>
+                <tr>
+                    <td style="width:20%"><label>NIC</label></td>
+                    <td style="width:5%"><i class="fa fa-id-card" aria-hidden="true"></i></td>
+                    <td style="width:50%"> <input type="text" id="nic" placeholder="123456789V OR 123456789000 " required></td>
+                </tr>
+                <tr>
+                    <td style="width:20%"><label>Faculty</label></td>
+                    <td style="width:5%"><i class="fa fa-university " aria-hidden="true"></i></td>
+                    <td style="width:50%"> <select id="faculty" required>
+                            <option value="">Select your Faculty</option>
+                            <option value="ET">Engineering Technology</option>
+                            <option value="BT">Bio System Technology</option>
+                            <option value="ICT">Information & Communication Technology</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td style="width:20%"><label>E-Mail</label></td>
+                    <td style="width:5%"><i class="fa fa-envelope " aria-hidden="true"></i></td>
+                    <td style="width:50%"> <input type="email" id="email" placeholder="E-Mail Address" required></td>
+                </tr>
+                <tr>
+                    <td style="width:20%"><label>Confirm E-Mail</label></td>
+                    <td style="width:5%"><i class="fa fa-envelope " aria-hidden="true"></i></td>
+                    <td style="width:50%"> <input type="email" id="cemail" placeholder="E-Mail Address" required></td>
+                </tr>
+                <tr>
+                    <td style="width:20%"><label>Contact No.</label></td>
+                    <td style="width:5%"><i class="fa fa-phone" aria-hidden="true"></i></td>
+                    <td style="width:50%"> <input type="text" id="phone" placeholder="">
+
+                    </td>
+            </table>
+            <div class="footer">
+                <small>Error Message</small>
+            </div>
+
+
+            <center>
+                <button type="submit">SUBMIT <i style="color:rgb(255, 255, 255);background-color:transparent;border:none;"class="fa fa-paper-plane" aria-hidden="true"></i><span class="bar"><span class="load"></span><span></button>
+            </center>
+
+
+
+
+
+        </form>
+    </div>
+</body>
+
+</html>
