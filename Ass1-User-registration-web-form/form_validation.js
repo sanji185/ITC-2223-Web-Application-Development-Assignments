@@ -90,14 +90,96 @@
 // }
 
 function formValidation() {
-    var fname = document.registration.fname;
-    var lname = document.registration.lname;
-    var dob = document.registration.dob;
-    var nic = document.registration.nic;
-    var email = document.registration.email;
-    var cemail = document.registration.cemail;
-    var phone = document.registration.phone;
+    var fname = document.getElementById("fname");
+    var lname = document.getElementById("lname");
+    var dob = document.getElementById("dob");
+    var nic = document.getElementById("nic");
+    var email = document.getElementById("email");
+    var cemail = document.getElementById("cemail");
+    var phone = document.getElementById("phone");
 
+    function fname_validation(fname) {
+        if (/[^a-zA-Z0-9]/.test(fname.value)) {
+            alert('First name should have only alpha-numeric characters');
+            fname.focus();
+            return false;
+        } else {
+           return true;
+        }
+    }
+
+    function lname_validation(lname) {
+        if (/[^a-zA-Z0-9]/.test(lname.value)) {
+            alert('Last name should have only alpha-numeric characters');
+            lname.focus();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function dob_validation(dob) {
+        if (dob.setHours(0, 0, 0, 0) >= new Date().setHours(0, 0, 0, 0)) {
+            alert('DOB shouldn\’t be a future date');
+            dob.focus();
+            return false;
+
+        } else if (getAge(dob) < 30) {
+            return true;
+        } else {
+            alert('You are not eligible for the competition');
+            dob.focus();
+            return false;
+        }
+    }
+
+    function getAge(birthYear) {
+        var currentDate = new Date();
+        var currentYear = currentDate.getFullYear();
+        age = currentYear - birthYear;
+        return age;
+    }
+
+    function nic_validation(nic) {
+        if ((nic.Count(char.IsDigit) == 9) && // only 9 digits
+            (nic.EndsWith("X", StringComparison.OrdinalIgnoreCase) ||
+                nic.EndsWith("V", StringComparison.OrdinalIgnoreCase)) || //a letter at the end 'x' or 'v'
+            (nic.Count(char.IsDigit) == 12)) { // 12 digits
+            return true;
+        } else {
+            alert('NIC should be 9 numbers with one letter or 12 numbers');
+            nic.focus();
+            return false;
+        }
+    }
+
+    function email_validation(email) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+            return true;
+        } else {
+            alert("Email should be in the proper email format!")
+            return false;
+        }
+    }
+
+    function cemail_validation(cemail) {
+        if (cemail.value != email.value) {
+            alert("Email addresses do not match!");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function phone_validation(phone) {
+        if (/^\d{10}$/.test(phone)) {
+            return true;
+        } else {
+            alert("Invalid number; must be ten digits")
+            number.focus()
+            return false;
+        }
+    }
 
     if (fname_validation(fname)) {
         if (lname_validation(lname)) {
@@ -115,88 +197,5 @@ function formValidation() {
         }
         return false;
 
-
-        function fname_validation(fname) {
-            if (/[^a-zA-Z0-9]/.test(fname.value)) {
-                return true;
-            } else {
-                alert('Names should have only alpha-numeric characters');
-                fname.focus();
-                return false;
-            }
-        }
-
-        function lname_validation(lname) {
-            if (/[^a-zA-Z0-9]/.test(lname.value)) {
-                return true;
-            } else {
-                alert('Names should have only alpha-numeric characters');
-                lname.focus();
-                return false;
-            }
-        }
-
-        function dob_validation(dob) {
-            if (dob.setHours(0, 0, 0, 0) >= new Date().setHours(0, 0, 0, 0)) {
-                alert('DOB shouldn\’t be a future date');
-                dob.focus();
-                return false;
-
-            } else if (getAge(dob) < 30) {
-                return true;
-            } else {
-                alert('You are not eligible for the competition');
-                dob.focus();
-                return false;
-            }
-        }
-
-        function getAge(birthYear) {
-            var currentDate = new Date();
-            var currentYear = currentDate.getFullYear();
-            age = currentYear - birthYear;
-            return age;
-        }
-
-        function nic_validation(nic) {
-            if ((nic.Count(char.IsDigit) == 9) && // only 9 digits
-                (nic.EndsWith("X", StringComparison.OrdinalIgnoreCase) ||
-                    nic.EndsWith("V", StringComparison.OrdinalIgnoreCase)) || //a letter at the end 'x' or 'v'
-                (nic.Count(char.IsDigit) == 12)) { // 12 digits
-                return true;
-            } else {
-                alert('NIC should be 9 numbers with one letter or 12 numbers');
-                nic.focus();
-                return false;
-            }
-        }
-
-        function email_validation(email) {
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
-                return true;
-            } else {
-                alert("Email should be in the proper email format!")
-                return false;
-            }
-        }
-
-        function cemail_validation(cemail) {
-            if (cemail.value != email.value) {
-                alert("Email addresses do not match!");
-                return false;
-            } else {
-                return true;
-            }
-        }
-
-        function phone_validation(phone) {
-            if (/^\d{10}$/.test(phone)) {
-                return true;
-            } else {
-                alert("Invalid number; must be ten digits")
-                number.focus()
-                return false;
-            }
-        }
     }
 }
